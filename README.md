@@ -28,3 +28,8 @@ This is closer to how production agent systems are built.
 - Deterministic routing logic
 - Separation of reasoning, retrieval, and synthesis
 
+# What This Demonstrates
+- Agent systems as graphs, not chains
+- Human-in-the-loop without breaking autonomy
+- Parallel agents with safe shared state
+- Synthesizing noisy outputs into a coherent report
