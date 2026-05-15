@@ -1,6 +1,8 @@
-🐛 Bug Report — LangGraph Research Agent
-Bug #1 — Hardcoded topic in Phase 4 (Execution)
-Location: Phase 4 — EXECUTION section (bottom of file)
+🐛 Bug Report - LangGraph Research Agent
+
+
+Bug #1 - Hardcoded topic in Phase 4 (Execution)
+Location: Phase 4 - EXECUTION section (bottom of file)
 
 Bug #2 — topic Hardcoded Twice (Phase 1 + Phase 4 are Disconnected)
 Location: Phase 1 (line ~110) AND Phase 4 (bottom)
