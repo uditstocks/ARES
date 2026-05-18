@@ -1,7 +1,7 @@
 # ARES - Autonomous Research &amp; Multi-Agent Evaluation Engine
 ARES is a graph-orchestrated, multi-agent research system built with LangGraph. It simulates how a real research team works: analysts are created, interviewed, refined through human feedback, and finally synthesized into a structured technical report.
 
-# What This Project Actually Solves
+# **What This Project Actually Solves**
 
 Most AI research tools are built as linear, one-shot scripts. Once they start, they either finish or fail.
 
@@ -16,20 +16,11 @@ This makes ARES suitable for real-world research workflows, not just demos.
 - Run parallel agents safely
 - Synthesize noisy agent outputs into a single coherent report
 
-This is closer to how production agent systems are built.
-
 # Architecture Highlights
 
-- LangGraph StateGraph orchestration
 - Interruptible human-in-the-loop checkpoints
 - Parallel agent execution
 - Typed state management with Pydantic
 - Structured LLM outputs
 - Deterministic routing logic
 - Separation of reasoning, retrieval, and synthesis
-
-# What This Demonstrates
-- Agent systems as graphs, not chains
-- Human-in-the-loop without breaking autonomy
-- Parallel agents with safe shared state
-- Synthesizing noisy outputs into a coherent report
