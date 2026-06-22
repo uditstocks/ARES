@@ -1,5 +1,5 @@
 """
-ARES — Autonomous Research & Multi-Agent Evaluation Engine
+ARES - Autonomous Research & Multi-Agent Evaluation Engine
 ==========================================================
 
 ARES turns a single research *topic* into a structured, cited markdown *report*
@@ -27,7 +27,7 @@ phases, each clearly marked with a banner further down this file:
 State objects (how data flows through the graphs):
     GenerateAnalystsState  →  InterviewState  →  ResearchGraphState
 
-Configuration — environment variables (a local .env is loaded):
+Configuration - environment variables (a local .env is loaded):
     LLM_PROVIDER        "nvidia" (default) | "ollama"
     NVIDIA_MODEL        NVIDIA model id       (default: "meta/llama-3.3-70b-instruct")
     NVIDIA_API_KEY      Required (default provider is nvidia)
@@ -40,7 +40,7 @@ Configuration — environment variables (a local .env is loaded):
     ARES_TOPIC / ARES_MAX_ANALYSTS / ARES_MAX_TURNS / ARES_THREAD_ID / ARES_OUTPUT
                         Defaults for the matching CLI flags.
 
-Run it (default provider is NVIDIA — set NVIDIA_API_KEY, or use LLM_PROVIDER=ollama):
+Run it (default provider is NVIDIA - set NVIDIA_API_KEY, or use LLM_PROVIDER=ollama):
     python ARES.py                                  # fully interactive
     python ARES.py --topic "..." --no-feedback      # non-interactive
     python ARES.py --max-analysts 4 --max-turns 2   # tune depth
@@ -87,7 +87,7 @@ from langgraph.types import Send
 
 # Optional: `rich` powers the interactive terminal UI (banner, tables, spinners,
 # markdown rendering). If it isn't installed, every ui_* helper below falls back
-# to plain print(), so the program still runs — just without the styling.
+# to plain print(), so the program still runs - just without the styling.
 try:
     from rich.console import Console
     from rich.panel import Panel
@@ -362,7 +362,7 @@ question_instructions = """You are an analyst conducting an interview, staying i
 Ask ONE insightful, specific question about your topic, building on the expert's
 previous answer when there is one.
 
-Output rules — follow exactly:
+Output rules - follow exactly:
 - Output ONLY the question itself. No preamble, greetings, or commentary.
 - Do NOT prefix your name or any speaker label (e.g. do not write "Aaradhya Jain:").
 - Do NOT include stage directions or actions in parentheses (e.g. "(nodding)").
@@ -558,7 +558,7 @@ Use ONLY the following context to answer their question:
 
 Rules:
 1. Answer the analyst's most recent question directly and immediately.
-2. Use ONLY the context above — no external facts.
+2. Use ONLY the context above - no external facts.
 3. Cite sources inline like [1], [2] matching the numbered context.
 4. Tailor the answer to the analyst's focus; keep it focused and specific.
 5. Output ONLY the answer. No speaker labels, no preamble, no stage directions.
@@ -1028,7 +1028,7 @@ def main():
         )
 
         if not user_feedback:
-            break  # User accepted the analysts — proceed to interviews.
+            break  # User accepted the analysts - proceed to interviews.
 
         ui_rule("♻️  Regenerating analysts...", style="yellow")
 
@@ -1047,7 +1047,7 @@ def main():
             if node == "__interrupt__":
                 continue
 
-            # Non-dict updates (e.g. interrupt payloads) — just acknowledge.
+            # Non-dict updates (e.g. interrupt payloads) - just acknowledge.
             if not isinstance(value, dict):
                 ui_node_done(node)
                 continue
