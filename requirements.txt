@@ -1,0 +1,21 @@
+# --- Core orchestration ---
+langgraph>=1.0
+langgraph-checkpoint-sqlite>=2.0   # SQLite checkpointer (persistent, resumable runs)
+langchain-core>=0.3
+langchain-community>=0.3            # WikipediaLoader + web search tools
+
+# --- LLM providers ---
+langchain-ollama>=0.2               # default provider (LLM_PROVIDER=ollama)
+langchain-nvidia-ai-endpoints>=0.3  # optional provider (LLM_PROVIDER=nvidia)
+
+# --- Retrieval ---
+wikipedia>=1.4                      # required by WikipediaLoader
+duckduckgo-search>=6.0             # default web search (SEARCH_BACKEND=duckduckgo, keyless)
+# tavily-python>=0.5               # uncomment if using SEARCH_BACKEND=tavily
+
+# --- Interactive terminal UI ---
+rich>=13.0                          # banner, tables, spinners, markdown report rendering
+
+# --- Misc ---
+python-dotenv>=1.0
+pydantic>=2.0
