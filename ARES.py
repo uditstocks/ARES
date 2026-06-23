@@ -717,11 +717,22 @@ interview_graph = interview_builder.compile()
 
 # --- Master state ------------------------------------------------------------
 
+def _keep_last(current, new):
+    """Reducer: collapse concurrent writes of the same scalar to one value.
+
+    The interview sub-graph echoes `max_num_turns` back to the parent once per
+    analyst. With the interviews running in parallel (the Map step), those N
+    identical writes land in a single super-step; a plain LastValue channel
+    rejects that with InvalidUpdateError, so we fold them down to one value.
+    """
+    return new
+
+
 class ResearchGraphState(TypedDict):
     """Top-level state for the full research pipeline."""
     topic: str
     max_analysts: int
-    max_num_turns: int
+    max_num_turns: Annotated[int, _keep_last]
     human_analyst_feedback: str
     analysts: List[Analyst]
     sections: Annotated[list, operator.add]   # memos collected from all interviews
