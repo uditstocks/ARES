@@ -38,7 +38,7 @@ graph TD
     human_feedback -- "Press Enter (Accept)" --> conduct_interview["Phase 2 & 3: Map Phase<br/><i>(Parallel Analyst Interviews)</i>"]
     
     %% Phase 2: Sub-Graph (Fanned-Out)
-    subgraph Phase 2: Analyst Q&A Sub-Graph (Per Persona)
+    subgraph "Phase 2: Analyst Q&A Sub-Graph (Per Persona)"
         direction TB
         sub_start([START]) --> ask_question["ask_question<br/><i>(Analyst Formulates Q)</i>"]
         ask_question --> continue_or_finish{"continue_or_finish?"}
