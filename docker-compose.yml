@@ -1,0 +1,59 @@
+# =============================================================================
+#  ARES · docker-compose
+# =============================================================================
+# Two ways to run:
+#
+#   1) NVIDIA NIM (cloud LLM, default) — needs NVIDIA_API_KEY in .env:
+#        docker compose run --rm ares --topic "AI in agriculture" --no-feedback
+#
+#   2) Fully local with Ollama (no API key, everything on your machine):
+#        docker compose --profile local up -d ollama
+#        docker compose exec ollama ollama pull llama3.1:8b
+#        LLM_PROVIDER=ollama OLLAMA_HOST=http://ollama:11434 \
+#          docker compose run --rm ares --topic "AI in agriculture" --no-feedback
+#      (OLLAMA_HOST is read by the Ollama client, so no code change is needed to
+#       reach the sidecar container instead of localhost.)
+#
+# Named volumes persist the SQLite checkpoints, generated reports, and any
+# pulled Ollama models across container restarts.
+# =============================================================================
+
+services:
+  ares:
+    build: .
+    image: ares:latest
+    # Load provider keys / overrides from .env (kept out of the image).
+    env_file:
+      - .env
+    environment:
+      # Persist checkpoints + reports into the mounted volume.
+      CHECKPOINT_DB: /data/ares_checkpoints.sqlite
+      ARES_OUTPUT: /data/research_report.md
+    volumes:
+      - ares_data:/data
+    # `stdin_open` + `tty` keep the interactive rich CLI (persona feedback
+    # prompts, live Q&A stream) usable via `docker compose run`.
+    stdin_open: true
+    tty: true
+
+  # --- Optional local LLM backend (enable with `--profile local`) ------------
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["local"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    # Uncomment to expose host GPUs to Ollama (requires the NVIDIA container
+    # toolkit). CPU-only inference works without this block, just slower.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+volumes:
+  ares_data:
+  ollama_models:

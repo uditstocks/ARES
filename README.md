@@ -196,14 +196,60 @@ python ARES.py --max-analysts 4 --max-turns 4 --output "ai_report.md"
 
 ---
 
+## 🐳 Running with Docker
+
+ARES ships with a slim, non-root container image so you can run it without a local
+Python setup. Configuration is injected at runtime — **no secrets are baked into the
+image** — and generated reports plus SQLite checkpoints persist in a named volume.
+
+### 1. Configure
+```bash
+cp .env.example .env      # then edit .env and add your NVIDIA_API_KEY
+```
+
+### 2A. Build & run with Docker
+```bash
+# Build the image
+docker build -t ares:latest .
+
+# Run a research job (persist artefacts in the `ares_data` volume)
+docker run --rm -it --env-file .env -v ares_data:/data \
+  ares:latest --topic "Artificial Intelligence in Agriculture" --no-feedback
+```
+The finished report is written to `/data/research_report.md` inside the volume.
+
+### 2B. Or use Docker Compose
+```bash
+# NVIDIA NIM provider (default) — reads keys from .env
+docker compose run --rm ares --topic "AI in Agriculture" --no-feedback
+```
+
+Run **fully locally** (no API key) with the bundled Ollama sidecar:
+```bash
+docker compose --profile local up -d ollama
+docker compose exec ollama ollama pull llama3.1:8b
+LLM_PROVIDER=ollama OLLAMA_HOST=http://ollama:11434 \
+  docker compose run --rm ares --topic "AI in Agriculture" --no-feedback
+```
+
+> **Note:** the interactive persona-feedback prompt needs a TTY. Use `docker run -it`
+> or `docker compose run` (both allocate one). For headless / CI pipelines, pass
+> `--no-feedback` to skip the human-in-the-loop checkpoint.
+
+---
+
 ## 📁 Repository Structure
 
 ```text
 ├── ARES.py                  # Core logic, State Graphs, and CLI driver
 ├── requirements.txt         # Package dependencies
+├── Dockerfile               # Container image (slim, non-root)
+├── docker-compose.yml       # Compose stack (ARES + optional Ollama sidecar)
+├── .dockerignore            # Build-context excludes (keeps secrets out)
+├── .env.example             # Template for the runtime configuration
 ├── research_report.md       # Default output path for the finalized report
 ├── ares_checkpoints.sqlite  # SQLite database storing run states & history
-├── bugs.md                  # Known issues log
+├── academic/                # Research paper (LaTeX + Markdown) & figures
 └── LICENSE                  # Project License
 ```
 

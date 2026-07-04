@@ -1,0 +1,41 @@
+# =============================================================================
+#  Docker build context excludes
+# =============================================================================
+# Keep the build context small and NEVER copy secrets or local run artefacts
+# into the image. Config is injected at runtime (--env-file / -e), not baked in.
+
+# --- Secrets (must never enter an image layer) -------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Local run artefacts (regenerated inside the /data volume) ---------------
+ares_checkpoints.sqlite*
+research_report.md
+*.md.bak
+
+# --- Version control / CI ----------------------------------------------------
+.git
+.gitignore
+.github
+
+# --- Python caches / virtualenvs ---------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# --- Editor / OS cruft -------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Docs & academic sources not needed at runtime ---------------------------
+academic/
+docs/
+bugs.md
