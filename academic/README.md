@@ -10,11 +10,11 @@ This folder contains a formal research paper describing the ARES system.
 
 ## Building the PDF
 
-The `.tex` source is **self-contained** — its bibliography is embedded, so no
+The `.tex` source is **self-contained** - its bibliography is embedded, so no
 BibTeX pass is needed. It uses only widely-available packages (TikZ, `booktabs`,
 `algorithm`/`algpseudocode`, `listings`, `hyperref`).
 
-### Option A — local LaTeX (TeX Live / MiKTeX)
+### Option A - local LaTeX (TeX Live / MiKTeX)
 
 ```bash
 cd academic
@@ -38,15 +38,15 @@ sudo apt-get install texlive-latex-recommended texlive-latex-extra \
                      texlive-pictures texlive-science texlive-fonts-recommended
 ```
 
-### Option B — no local LaTeX
+### Option B - no local LaTeX
 
 Upload `ARES_paper.tex` (and optionally `references.bib`) to
 [Overleaf](https://www.overleaf.com/) and compile with **pdfLaTeX**. It builds
 as-is.
 
-### Option C — read the Markdown
+### Option C - read the Markdown
 
-If you just want to read the paper, open [`ARES_paper.md`](ARES_paper.md) — it
+If you just want to read the paper, open [`ARES_paper.md`](ARES_paper.md) - it
 mirrors the LaTeX content with an ASCII architecture diagram.
 
 ## Switching to a BibTeX workflow (optional)
