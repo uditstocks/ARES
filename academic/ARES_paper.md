@@ -1,9 +1,9 @@
 # ARES: A Stateful, Human-in-the-Loop Multi-Agent Architecture for Grounded Autonomous Research Synthesis
 
-**Udit Sharma** · `teamforgeguild@gmail.com` · *Independent Research*
+**Udit Sharma** · `uditsharma9981@gmail.com` · *Independent Research*
 
 > This is a readable Markdown rendering of the paper. The typeset, citation-ready
-> version — with architecture figure, algorithm, tables, and bibliography — is
+> version - with architecture figure, algorithm, tables, and bibliography — is
 > [`ARES_paper.tex`](ARES_paper.tex). Build instructions are in
 > [`README.md`](README.md).
 
