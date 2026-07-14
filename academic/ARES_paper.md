@@ -3,7 +3,7 @@
 **Udit Sharma** · `uditsharma9981@gmail.com` · *Independent Research*
 
 > This is a readable Markdown rendering of the paper. The typeset, citation-ready
-> version - with architecture figure, algorithm, tables, and bibliography — is
+> version - with architecture figure, algorithm, tables, and bibliography - is
 > [`ARES_paper.tex`](ARES_paper.tex). Build instructions are in
 > [`README.md`](README.md).
 
@@ -156,7 +156,7 @@ and the top-level `ResearchGraphState` (personas plus the collected memos and th
 report parts). Channels declare *reducers* that define how concurrent or repeated
 writes combine.
 
-### 3.2 Phase 1 — Analyst persona generation with HITL steering
+### 3.2 Phase 1 - Analyst persona generation with HITL steering
 
 Given a topic and a budget *N* of analysts, ARES prompts the LLM under a
 *structured-output* constraint to return exactly *N* personas, each with a name,
@@ -173,7 +173,7 @@ property of the compiled graph (`interrupt_before=["human_feedback"]`), not of t
 driver loop, so the same checkpoint semantics hold whether the run is interactive,
 scripted, or resumed from disk.
 
-### 3.3 Phase 2 — The interview sub-graph
+### 3.3 Phase 2 - The interview sub-graph
 
 Each persona conducts an independent interview with an "expert" instantiated from
 the same LLM. Five nodes:
@@ -197,7 +197,7 @@ proceeds to retrieval. After an answer, `route_messages` ends the interview once
 the number of expert answers reaches the turn cap, else loops back. Turn counting
 is robust: it counts *tagged expert answers*, not raw message length.
 
-### 3.4 Phase 3 — Map–reduce over personas
+### 3.4 Phase 3 - Map–reduce over personas
 
 Once personas are accepted, `initiate_all_interviews` performs the **Map** step by
 emitting one LangGraph `Send` per persona, each launching a fresh instance of the
@@ -303,7 +303,7 @@ what retrieval provides. Three mechanisms enforce and preserve this.
   than raising.
 
 ```
-Algorithm — Map–reduce over analyst personas
+Algorithm - Map–reduce over analyst personas
   Require: topic t, personas A = {a1..aN}, turn cap τ
   -- Map (parallel) --
   for each a_i in A concurrently:
