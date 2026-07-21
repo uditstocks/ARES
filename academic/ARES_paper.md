@@ -392,12 +392,16 @@ perform a global consistency or contradiction-resolution pass across memos.
 
 ## 10. Future Work
 
-Priorities: (i) the quantitative evaluation above, including an automated
-citation-faithfulness harness; (ii) a cross-memo reconciliation node that detects
-and resolves contradictions before finalisation; (iii) heterogeneous role models
-(a stronger model for synthesis, a cheaper one for interviews); (iv) richer
-retrieval (vector stores, PDF/arXiv ingestion, recency-aware ranking); and (v) an
-evaluation/critique agent — the "E" in ARES's name — that scores each memo and can
+Priorities:
+(i) the quantitative evaluation above, including an automated
+citation-faithfulness harness; 
+(ii) a cross-memo reconciliation node that detects
+and resolves contradictions before finalisation;
+(iii) heterogeneous role models
+(a stronger model for synthesis, a cheaper one for interviews);
+(iv) richer
+retrieval (vector stores, PDF/arXiv ingestion, recency-aware ranking);
+(v) an evaluation/critique agent  the "E" in ARES's name  that scores each memo and can
 trigger targeted re-interviews, closing an outer quality-control loop.
 
 ---
