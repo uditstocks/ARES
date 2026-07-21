@@ -404,15 +404,7 @@ trigger targeted re-interviews, closing an outer quality-control loop.
 
 ## 11. Conclusion
 
-ARES reframes automated research synthesis from a fragile linear script into the
-coordinated behaviour of a small, steerable, resilient research team. By
-expressing the workflow as an explicit, checkpointed state graph, it earns durable
-intermediate state, first-class interruption and resumption, and a principled
-human-in-the-loop steering point. Its engineering contributions — a single-model
-dialogue re-roling technique, concurrency-tolerant channel reducers, a
-retry-and-fallback resilience layer, and a strict numbered-citation grounding
-scheme — are individually small but collectively transform a demo-grade agent into
-a system that survives real-world failures and remains transparent to its user.
+ARES reframes automated research synthesis, transforming it from a fragile linear script into the coordinated activity of a small, steerable, and resilient research team. By expressing the workflow as an explicit, checkpointed state graph, the system gains durable intermediate state, first-class interruption and resumption, and a principled point for human-in-the-loop steering. Its engineering contributions a single-model dialogue re-roling technique, concurrency-tolerant channel reducers, a retry-and-fallback resilience layer, and a strict numbered-citation grounding scheme are modest individually but collectively elevate a demonstration-grade agent into a system that withstands real-world failures while remaining transparent to its user.
 
 ---
 
