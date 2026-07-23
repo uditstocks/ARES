@@ -50,7 +50,7 @@ emit one long generation. This pattern inherits three structural weaknesses:
    answer; there is no principled point at which they can inspect and redirect
    *how* the topic will be investigated before compute is spent.
 3. **Weak grounding.** When retrieval and generation are only loosely coupled,
-   the model freely interpolates unsupported claims, and citations — if present —
+   the model freely interpolates unsupported claims, and citations — if present 
    often do not map to the passages actually used.
 
 ARES is a response to these weaknesses. Rather than a single agent, it
