@@ -381,7 +381,7 @@ turn (ablating the team); (c) ARES with the resilience layer disabled.
 Retrieval quality bounds answer quality: a keyless web backend and short
 per-source budgets can miss or truncate relevant evidence. The expert and analyst
 share one model, so systematic biases are correlated across roles rather than
-independent. Grounding is enforced by instruction and structure but not *proven* —
+independent. Grounding is enforced by instruction and structure but not *proven* 
 a determined model can still paraphrase beyond its sources, which is why
 citation-faithfulness measurement is prioritised. Parallel fan-out multiplies
 token and latency cost roughly linearly in the number of personas. Finally, the
