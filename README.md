@@ -198,9 +198,7 @@ python ARES.py --max-analysts 4 --max-turns 4 --output "ai_report.md"
 
 ## 🐳 Running with Docker
 
-ARES ships with a slim, non-root container image so you can run it without a local
-Python setup. Configuration is injected at runtime — **no secrets are baked into the
-image** — and generated reports plus SQLite checkpoints persist in a named volume.
+ARES ships as a slim, non-root container image, so you can run it without installing or configuring Python locally. Configuration is injected at runtime, ensuring no secrets are baked into the image. Generated reports and SQLite checkpoints are persisted in a named volume, so your data survives container restarts and rebuilds.
 
 ### 1. Configure
 ```bash
