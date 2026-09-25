@@ -28,10 +28,13 @@ State objects (how data flows through the graphs):
     GenerateAnalystsState  →  InterviewState  →  ResearchGraphState
 
 Configuration - environment variables (a local .env is loaded):
-    LLM_PROVIDER        "nvidia" (default) | "ollama"
+    LLM_PROVIDER        "nvidia" (default) | "ollama" | "openrouter"
     NVIDIA_MODEL        NVIDIA model id       (default: "meta/llama-3.3-70b-instruct")
     NVIDIA_API_KEY      Required (default provider is nvidia)
     OLLAMA_MODEL        Ollama model id       (default: "llama3.1:8b"; used when LLM_PROVIDER=ollama)
+    OPENROUTER_MODEL    OpenRouter model id   (default: "openai/gpt-4o-mini"; e.g. "openai/gpt-4o")
+    OPENROUTER_API_KEY  Required when LLM_PROVIDER=openrouter
+    OPENROUTER_BASE_URL OpenRouter endpoint   (default: "https://openrouter.ai/api/v1")
     CHECKPOINT_BACKEND  "sqlite" (default) | "memory"
     CHECKPOINT_DB       SQLite file path      (default: "ares_checkpoints.sqlite")
     SEARCH_BACKEND      "duckduckgo" (default) | "tavily" | "none"
@@ -123,8 +126,20 @@ if LLM_PROVIDER == "nvidia":
 elif LLM_PROVIDER == "ollama":
     from langchain_ollama import ChatOllama
     llm = ChatOllama(model=os.getenv("OLLAMA_MODEL", "llama3.1:8b"))
+elif LLM_PROVIDER == "openrouter":
+    # OpenRouter speaks the OpenAI wire protocol, so ChatOpenAI works as-is:
+    # point base_url at OpenRouter and pick any model it hosts (e.g. openai/gpt-4o,
+    # anthropic/claude-*, meta-llama/*). Structured output uses tool calling, so
+    # prefer models with function-calling support.
+    from langchain_openai import ChatOpenAI
+    assert os.getenv("OPENROUTER_API_KEY"), "OPENROUTER_API_KEY not found in .env file!"
+    llm = ChatOpenAI(
+        model=os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        base_url=os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
+    )
 else:
-    raise ValueError(f"Unknown LLM_PROVIDER '{LLM_PROVIDER}'. Use 'ollama' or 'nvidia'.")
+    raise ValueError(f"Unknown LLM_PROVIDER '{LLM_PROVIDER}'. Use 'ollama', 'nvidia' or 'openrouter'.")
 
 # --- Web search backend ------------------------------------------------------
 # Used during interviews to fetch supporting context (alongside Wikipedia).
@@ -955,7 +970,7 @@ def ui_node_done(node):
 # --- CLI argument parsing ----------------------------------------------------
 
 def parse_args():
-    """Parse CLI flags. Each flag falls back to an ARES_* environment variable."""
+    """Parse CLI flags. Each flag except --no-feedback falls back to an ARES_* environment variable."""
     p = argparse.ArgumentParser(
         description="ARES - Autonomous Research & Multi-Agent Evaluation Engine"
     )
@@ -1109,6 +1124,8 @@ if __name__ == "__main__":
             ui_print(f"[bold red]❌ Could not reach the LLM backend (provider: {LLM_PROVIDER}).[/]")
             if LLM_PROVIDER == "ollama":
                 ui_print("   Is Ollama running?  Try:  [bold]ollama serve[/]  then  [bold]ollama pull <model>[/]")
+            elif LLM_PROVIDER == "openrouter":
+                ui_print("   Check OPENROUTER_API_KEY and your network connection.")
             else:
                 ui_print("   Check NVIDIA_API_KEY and your network connection.")
             ui_print(f"[dim]   Details: {e}[/]")

@@ -140,7 +140,7 @@ pip install -r requirements.txt
 ### 2. Configure Environment
 Create a `.env` file in the root directory:
 ```env
-# Choose LLM Provider: "nvidia" (default) or "ollama"
+# Choose LLM Provider: "nvidia" (default), "ollama", or "openrouter"
 LLM_PROVIDER="nvidia"
 
 # NVIDIA NIM Configuration (if using nvidia)
@@ -149,6 +149,10 @@ NVIDIA_MODEL="meta/llama-3.3-70b-instruct"
 
 # Ollama Configuration (if using ollama)
 # OLLAMA_MODEL="llama3.1:8b"
+
+# OpenRouter Configuration (if using openrouter — OpenAI GPT-4 family & 100+ models)
+# OPENROUTER_API_KEY="your_openrouter_api_key_here"
+# OPENROUTER_MODEL="openai/gpt-4o-mini"
 
 # Persistence & Checkpointing Backend: "sqlite" (default) or "memory"
 CHECKPOINT_BACKEND="sqlite"
@@ -193,6 +197,35 @@ Customize the number of analysts generated and the depth of the interviews:
 ```bash
 python ARES.py --max-analysts 4 --max-turns 4 --output "ai_report.md"
 ```
+
+---
+
+## 🖥️ Dashboard Edition (Textual TUI)
+
+Alongside the classic CLI, ARES ships a full-screen **dashboard** built with
+[Textual](https://textual.textualize.io/) — designed for live demos: a real-time
+agent pipeline, token-by-token streaming, and performance telemetry, all without
+blocking the UI while the LLM generates.
+
+```bash
+python -m ares_tui                                   # interactive setup screen
+python -m ares_tui --topic "AI in Agriculture" --no-feedback
+```
+
+**What you get:**
+
+*   **Status header** — topic, run phase badge, connection status, provider·model, clock.
+*   **Agent pipeline panel** — animated per-stage progress (🧑‍🔬 Personas → 🎙 Interviews → 🧵 Synthesis → 📊 Report) plus a live row per analyst showing which stage (🎤 questioning / 🔍 retrieving / 🧠 answering / 📝 writing) each parallel interview is in.
+*   **Current question & expert answer panels** — streamed token-by-token with a blinking cursor, attributed to the analyst asking.
+*   **Live transcript** — the full Q&A history across all parallel interviews, color-coded per analyst.
+*   **Activity log** — compact, categorised event timeline (system / AI / retriever) instead of scrolling prints.
+*   **Performance metrics** — per-stage latencies (question gen, retrieval, LLM answer, section writing), token usage, interviews completed, memory, elapsed time, and an answer-latency sparkline.
+*   **Persona review modal** — the human-in-the-loop checkpoint as a proper form: review the analyst table, type feedback to regenerate, or accept with Enter.
+*   **Report screen** — the final report rendered as rich markdown in-app (press `R`), saved to disk as before.
+
+The dashboard is a *presentation layer only*: it imports the same compiled
+LangGraph pipeline from `ARES.py` and runs it on a background thread — the
+classic `python ARES.py` CLI keeps working unchanged.
 
 ---
 
@@ -242,6 +275,12 @@ LLM_PROVIDER=ollama OLLAMA_HOST=http://ollama:11434 \
 
 ```text
 ├── ARES.py                  # Core logic, State Graphs, and CLI driver
+├── ares_tui/                # Dashboard edition (Textual TUI): python -m ares_tui
+│   ├── engine.py            #   runs the graph on a worker thread, emits typed events
+│   ├── events.py            #   engine → UI event contract
+│   ├── widgets.py           #   reusable dashboard widgets
+│   ├── app.py               #   screens, layout, dispatch
+│   └── app.tcss             #   Textual stylesheet
 ├── requirements.txt         # Package dependencies
 ├── Dockerfile               # Container image (slim, non-root)
 ├── docker-compose.yml       # Compose stack (ARES + optional Ollama sidecar)

@@ -1,0 +1,213 @@
+/* ARES dashboard — Textual CSS.
+   Palette: deep slate background, cyan accent, muted steel borders. */
+
+Screen {
+    background: #0b0f17;
+}
+
+/* --- Status bar ---------------------------------------------------------- */
+
+#status-header {
+    dock: top;
+    height: 1;
+    background: #111726;
+}
+
+Footer {
+    background: #111726;
+}
+
+/* --- Dashboard body -------------------------------------------------------- */
+
+#body {
+    height: 1fr;
+}
+
+#sidebar {
+    width: 36;
+    min-width: 30;
+}
+
+#main {
+    width: 1fr;
+}
+
+#pipeline {
+    border: round #2b3550;
+    border-title-color: #7d8da5;
+    border-title-style: bold;
+    margin: 1 0 0 1;
+    padding: 0 1;
+    height: auto;
+    max-height: 65%;
+}
+
+#metrics {
+    border: round #2b3550;
+    border-title-color: #7d8da5;
+    border-title-style: bold;
+    margin: 1 0 0 1;
+    padding: 0 1;
+    height: 1fr;
+}
+
+#metrics-spark-label {
+    margin-top: 1;
+    height: 1;
+}
+
+#metrics-spark {
+    height: 2;
+    margin-bottom: 1;
+}
+
+#metrics-spark > .sparkline--min-color {
+    color: #1c4b63;
+}
+#metrics-spark > .sparkline--max-color {
+    color: #22d3ee;
+}
+
+#question {
+    border: round #22d3ee;
+    border-title-color: #22d3ee;
+    border-title-style: bold;
+    margin: 1 1 0 1;
+    padding: 0 1;
+    height: 6;
+    min-height: 5;
+}
+
+#response {
+    border: round #2b3550;
+    border-title-color: #7d8da5;
+    border-title-style: bold;
+    margin: 1 1 0 1;
+    padding: 0 1;
+    height: 1fr;
+    min-height: 8;
+    scrollbar-size-vertical: 1;
+}
+
+#transcript {
+    border: round #2b3550;
+    border-title-color: #7d8da5;
+    border-title-style: bold;
+    margin: 1 1 0 1;
+    padding: 0 1;
+    height: 1fr;
+    scrollbar-size-vertical: 1;
+    background: transparent;
+}
+
+#activity {
+    dock: bottom;
+    height: 9;
+    border: round #2b3550;
+    border-title-color: #7d8da5;
+    border-title-style: bold;
+    margin: 1 1 0 1;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+    background: transparent;
+}
+
+/* --- Setup screen ------------------------------------------------------------ */
+
+SetupScreen {
+    align: center middle;
+}
+
+#setup-box {
+    width: 76;
+    height: auto;
+    border: round #2b3550;
+    background: #111726;
+    padding: 1 4 2 4;
+}
+
+#logo {
+    color: #22d3ee;
+    width: auto;
+    margin-bottom: 1;
+}
+
+#tagline {
+    margin-bottom: 1;
+}
+
+#topic-input {
+    margin-bottom: 1;
+}
+
+#setup-row {
+    height: 3;
+}
+
+.setup-label {
+    padding: 1 1 0 0;
+    color: #7d8da5;
+}
+
+.setup-small {
+    width: 8;
+    margin-right: 2;
+}
+
+#start {
+    margin-left: 4;
+}
+
+/* --- Analyst review modal ------------------------------------------------------ */
+
+AnalystModal {
+    align: center middle;
+    background: #0b0f17 60%;
+}
+
+#modal-box {
+    width: 90%;
+    max-width: 110;
+    height: auto;
+    max-height: 85%;
+    border: round #22d3ee;
+    background: #111726;
+    padding: 1 2;
+}
+
+#modal-title {
+    margin-bottom: 1;
+}
+
+#modal-table {
+    height: auto;
+    max-height: 14;
+    margin-bottom: 1;
+}
+
+#modal-feedback {
+    margin-bottom: 1;
+}
+
+#modal-actions {
+    height: 3;
+    align-horizontal: right;
+}
+
+#modal-actions Button {
+    margin-left: 2;
+}
+
+/* --- Report screen ---------------------------------------------------------------- */
+
+#report-path {
+    dock: top;
+    height: 1;
+    background: #111726;
+    padding: 0 1;
+}
+
+#report-scroll {
+    margin: 1 2;
+    scrollbar-size-vertical: 1;
+}
