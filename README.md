@@ -4,7 +4,7 @@
 [![LangGraph](https://img.shields.io/badge/framework-LangGraph-orange.svg?style=flat-square)](https://github.com/langchain-ai/langgraph)
 [![NVIDIA NIM](https://img.shields.io/badge/LLM-NVIDIA%20NIM-green.svg?style=flat-square)](https://build.nvidia.com/)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-black.svg?style=flat-square)](https://ollama.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg?style=flat-square)](LICENSE)
 
 ARES is a **stateful, graph-orchestrated multi-agent research engine** built on top of [LangGraph](https://github.com/langchain-ai/langgraph). Unlike simple linear, one-shot AI scripts that fail silently or lack resilience, ARES simulates a real-world research team: it dynamically generates distinct analyst personas, subjects them to interactive human feedback, runs parallel search-grounded expert interviews, and synthesizes the findings into a cited, comprehensive markdown report.
 
@@ -296,4 +296,6 @@ LLM_PROVIDER=ollama OLLAMA_HOST=http://ollama:11434 \
 
 ## 🛡️ License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Copyright (c) 2025-2026 Udit Sharma. **All Rights Reserved.**
+
+This is proprietary software. No permission is granted to use, copy, modify, distribute, or create derivative works from this code without the prior written consent of the owner. See the [LICENSE](LICENSE) file for details.

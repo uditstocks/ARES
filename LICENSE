@@ -1,21 +1,39 @@
-MIT License
+Copyright (c) 2025-2026 Udit Sharma. All Rights Reserved.
 
-Copyright (c) 2025 Udit Sharma
+PROPRIETARY AND CONFIDENTIAL
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and its associated source code, documentation, research
+materials, and all other files in this repository (collectively, the
+"Software") are the exclusive property of Udit Sharma (the "Owner").
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+NO LICENSE IS GRANTED. Except as expressly permitted in writing by the Owner,
+you may not, in whole or in part:
+
+  1. Use, run, or execute the Software for any purpose, commercial or
+     non-commercial;
+  2. Copy, reproduce, or download the Software, other than as incidentally
+     required to view it on the hosting platform;
+  3. Modify, adapt, translate, or create derivative works based on the
+     Software;
+  4. Distribute, publish, sublicense, sell, lease, lend, or otherwise make
+     the Software available to any third party;
+  5. Reverse engineer, decompile, or disassemble the Software;
+  6. Use the Software, or any part of it, to train, fine-tune, or evaluate
+     machine learning or artificial intelligence models.
+
+The public visibility of this repository does not grant any rights to the
+Software. Viewing the source code does not constitute permission to use it.
+
+Any request for permission to use the Software must be made in writing to the
+Owner. Any permission granted is valid only to the extent stated in that
+written grant.
+
+Unauthorized use, reproduction, or distribution of the Software is strictly
+prohibited and may result in civil and criminal liability.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+OWNER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
